@@ -1,0 +1,61 @@
+.board {
+    margin-left: auto;
+    margin-right: auto;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.row {
+    display: table-row;
+}
+
+.square {
+   display: table-cell;
+   width: 100px;
+   height: 100px;
+}
+
+.row:nth-child(odd) .square:nth-child(even), .row:nth-child(even) .square:nth-child(odd) {
+	background: #b58863;
+}
+
+.row:nth-child(odd) .square:nth-child(odd), .row:nth-child(even) .square:nth-child(even) {
+	background: beige;
+}
+
+/* .white-square {
+    background-color: beige;
+}
+
+.black-square {
+    background-color: #b58863;
+} */
+
+body {
+    padding-left: 30%;
+    padding-right: 30%;
+    display: table;
+    background-color: black;
+    height: 100%;
+}
+
+.piece {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 90%;
+    height: auto;
+}
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+  }
