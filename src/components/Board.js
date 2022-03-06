@@ -1,7 +1,7 @@
 import "./css/Board.css";
 
 //react
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 //jsc backend
 import { makeMove, compboard, set_FEN, resetBoard, get_FEN } from "../jschess";
@@ -53,6 +53,7 @@ function Board({ board, setBoardState }) {
 
   const reset = () => {
     resetBoard();
+    setOut_FEN(get_FEN());
     setBoardState(compboard.slice().reverse());
   }
 
@@ -64,7 +65,7 @@ function Board({ board, setBoardState }) {
 
   return (
     <div className="body">
-      <div className="header" style={{"paddingLeft": "1%", "paddingTop": ".5%"}}>
+      <div className="header" style={{"paddingLeft": "1.1%", "paddingTop": ".5%"}}>
         <button onClick={reset}>Reset Board</button>
         <button onClick={switchSide}>Flip Board</button>
         <select>
@@ -73,7 +74,7 @@ function Board({ board, setBoardState }) {
           <option onClick={() => setPromote('b')}>Promote to Bishop</option>
           <option onClick={() => setPromote('n')}>Promote to Knight</option>
         </select>
-        <div style={{"color": "white"}}>It is {turn}'s turn.</div>
+        <div style={{"color": "white"}}>It is {turn}'s turn</div>
       </div>
       <div className="board">
         {columns.slice().reverse().map((_, y) => (
