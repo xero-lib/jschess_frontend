@@ -1,13 +1,15 @@
 import { useDrop } from "react-dnd";
+import { get_FEN } from "../jschess";
 import { move, getPosition } from "./Board";
 
-export default function Square({children, x, y}) {
+export default function Square({children, x, y, updateFEN}) {
     const [, drop] = useDrop(
         () => ({
           accept: "piece",
           drop: (item) => {
             const [start,,] = item.id.split('_');
-            move(start, getPosition([y,x]))
+            move(start, getPosition([y,x]));
+            updateFEN(get_FEN())            
           }
         }),
         [x, y]
