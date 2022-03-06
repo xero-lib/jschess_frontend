@@ -1,0 +1,3 @@
+[submodule "src/jschess"]
+	path = src/jschess
+	url = https://github.com/xero-lib/jschess
