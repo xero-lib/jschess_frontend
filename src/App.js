@@ -5,17 +5,17 @@ import { boardSubject } from "./components/Board";
 import { compboard } from "./jschess";
 
 function App() {
-  const [board_state, setBoard_state] = useState(compboard.slice().reverse());
+  const [boardState, setBoardState] = useState(compboard.slice().reverse());
   useEffect(() => {
     const subscription = boardSubject.subscribe((sboard) =>
-      setBoard_state(sboard.board)
+      setBoardState(sboard.board)
     );
     return () => subscription.unsubscribe();
   }, []);
 
   return (
     <div className="App">
-      <Board board={board_state} />
+      <Board board={boardState} setBoardState={setBoardState} />
     </div>
   );
 }

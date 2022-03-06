@@ -1,9 +1,7 @@
-import { ItemTypes } from "./Constants";
 import { useDrop } from "react-dnd";
 import { move, getPosition } from "./Board";
 
 export default function Square({children, x, y}) {
-
     const [, drop] = useDrop(
         () => ({
           accept: "piece",

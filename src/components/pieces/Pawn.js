@@ -1,4 +1,3 @@
-import { ItemTypes } from "../Constants";
 import { useDrag } from "react-dnd";
 
 function Pawn({ color, position }) {

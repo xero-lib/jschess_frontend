@@ -1,5 +1,4 @@
-import { ItemTypes } from "../Constants";
-import { useDrag, DragPreviewImage } from "react-dnd";
+import { useDrag } from "react-dnd";
 
 function Bishop({ color, position }) {
 	const [{ isDragging }, drag] = useDrag({
