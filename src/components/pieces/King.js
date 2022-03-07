@@ -12,16 +12,18 @@ function King({ color, position }) {
   });
 
   return (
-    <img
-      className="piece noselect"
-      src={`./chess_pieces/${color.toLowerCase()}_king.png`}
-      ref={drag}
-      style={{
-        opacity: isDragging ? 0.5 : 1,
-        cursor: "grab",
-      }}
-			alt={`${color} King`}
-    />
+    <div style={{"height": "inherit"}}>
+      <img
+        className="piece noselect"
+        src={`./chess_pieces/${color.toLowerCase()}_king.png`}
+        ref={drag}
+        style={{
+          opacity: isDragging ? 0.5 : 1,
+          cursor: "grab",
+        }}
+        alt={`${color} King`}
+      />
+    </div>
   );
 }
 

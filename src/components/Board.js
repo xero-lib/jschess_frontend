@@ -45,26 +45,26 @@ export function move(start, end) {
     stalemate = 3
   ;
 
-  let csqr_loc = getKingPos(getPly());
-  let osqr_loc = getKingPos(getPly() === "Light" ? "Dark" : "Light");
-  let ckingElement = document.getElementById(`${csqr_loc[0]}_${csqr_loc[1]}`).children[0];
-  let okingElement = document.getElementById(`${osqr_loc[0]}_${osqr_loc[1]}`).children[0];
+  let csqr_loc = getKingPos(getPly() === "Light" ? "Dark" : "Light");
+  let osqr_loc = getKingPos(getPly());
+  let ckingElement = document.getElementById(`${7-csqr_loc[0]}_${csqr_loc[1]}`).children[0];
+  let okingElement = document.getElementById(`${7-osqr_loc[0]}_${osqr_loc[1]}`).children[0];
 
   if (moveResult === check) {
-    ckingElement.classList.add("checked");
+    okingElement.classList.add("checked");
   } else {
-    okingElement.classList.remove("checked");
+    ckingElement.classList.remove("checked");
   }
 
   if (moveResult === checkmate) {
     ckingElement.classList.add("checked");
-    document.getElementById("turnheader").textContent = `Checkmate! ${turn === "Dark" ? "Light" : "Dark"} wins!`
+    document.getElementById("turnheader").textContent = `Checkmate! ${turn === "Dark" ? "Light" : "Dark"} wins!`;
   } else if ([true, 1, 3].includes(moveResult)) {
-    document.getElementById("turnheader").textContent = `It is ${turn}'s turn.`
+    document.getElementById("turnheader").textContent = `It is ${turn}'s turn.`;
   }
 
   if (moveResult === stalemate) {
-    alert("Draw by stalemate!");
+    document.getElementById("turnheader").textContent = `Stalemate!`;
   }
 }
 
@@ -86,11 +86,11 @@ function Board({ board, setBoardState }) {
 
   const reset = () => {
     resetBoard();
-    let dKingPos = getKingPos("Dark");  document.getElementById(`${dKingPos[0]}_${dKingPos[1]}`).children[0].classList.remove("checked");
-    let lKingPos = getKingPos("Light"); document.getElementById(`${lKingPos[0]}_${lKingPos[1]}`).children[0].classList.remove("checked");
-    document.getElementById("turnheader").textContent = `It is ${turn}'s turn.`
     setOut_FEN(get_FEN());
     setBoardState(compboard.slice().reverse());
+    let dKingPos = getKingPos("Dark");  document.getElementById(`${dKingPos[0]}_${dKingPos[1]}`)?.children[0]?.classList.remove("checked");
+    let lKingPos = getKingPos("Light"); document.getElementById(`${lKingPos[0]}_${lKingPos[1]}`)?.children[0]?.classList.remove("checked");
+    document.getElementById("turnheader").textContent = `It is ${turn}'s turn.`
   }
 
   let isLight = side === "Light";
@@ -112,7 +112,7 @@ function Board({ board, setBoardState }) {
         {columns.slice().reverse().map((_, y) => (
           <div key={isLight ? y : 7-y} className="row">
             {files.map((_, x) => (
-              <Square key={isLight ? x : 7-x} id={`${7-y}_${isLight ? x : 7-x}`} x={isLight ? x : 7-x} y={isLight ? y : 7-y} updateFEN={setOut_FEN} children={
+              <Square key={isLight ? x : 7-x} id={`${isLight ? y : 7-y}_${isLight ? x : 7-x}`} x={isLight ? x : 7-x} y={isLight ? y : 7-y} updateFEN={setOut_FEN} children={
                 (board[isLight ? y : 7-y][isLight ? x : 7-x].piece)
                   ? fetchPiece(board[isLight ? y : 7-y][isLight ? x : 7-x].piece.color, board[isLight ? y : 7-y][isLight ? x : 7-x].piece.symbol, getPosition([(isLight ? y : 7-y), (isLight ? x : 7-x)]))
                   : <></>

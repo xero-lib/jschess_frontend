@@ -12,16 +12,16 @@ function Bishop({ color, position }) {
 	})
 
   return (
-    <img
-      className="piece noselect"
-      src={`./chess_pieces/${color.toLowerCase()}_bishop.png`}
-      ref={drag}
-      style={{
-        opacity: isDragging ? 0 : 1,
-        cursor: "grab",
-      }}
-			alt={`${color} Bishop`}
-    />
+      <img
+        className="piece noselect"
+        src={`./chess_pieces/${color.toLowerCase()}_bishop.png`}
+        ref={drag}
+        style={{
+          opacity: isDragging ? 0 : 1,
+          cursor: "grab",
+        }}
+        alt={`${color} Bishop`}
+      />
   );
 }
 
