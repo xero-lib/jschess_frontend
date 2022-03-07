@@ -1,10 +1,10 @@
 .board {
-    margin-left: auto;
+    margin-left: 3.85%;
     margin-right: auto;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    padding-left: 4.3%;
+    /* padding-left: 4.3%; */
 }
 
 .row {
@@ -13,8 +13,8 @@
 
 .square {
    display: table-cell;
-   width: 75px;
-   height: 75px;
+   width: 85px;
+   height: 85px;
 }
 
 .row:nth-child(odd) .square:nth-child(even), .row:nth-child(even) .square:nth-child(odd) {
@@ -76,4 +76,8 @@ body {
   top: 0;
   width: 100%;
   text-align: center;
+}
+
+.checked {
+    background: radial-gradient(ellipse at center, red 0%, #e70000 25%, rgba(169,0,0,0) 89%, rgba(158,0,0,0) 100%);
 }
