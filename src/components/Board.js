@@ -37,7 +37,7 @@ export function move(start, end) {
   if (moveResult) {
     boardSubject.next({board : compboard.slice().reverse()});
   }
-  console.log(moveResult);
+  
   let
     check     = 1,
     checkmate = 2,
