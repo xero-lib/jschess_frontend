@@ -17,7 +17,7 @@ import { turn } from "../jschess/util/makeMove";
 const files = ["a", "b", "c", "d", "e", "f", "g", "h"];
 const columns = [1, 2, 3, 4, 5, 6, 7, 8];
 
-// set_FEN("rnbq1bnr/pp2p1pp/2pp4/8/Q4p1k/N1P5/PP1PPPPP/R1B1KBNR w KQ - 0 10");
+set_FEN("1k6/8/2Q5/8/8/2N5/PPP3PP/R3KBNR w KQ - 11 28");
 
 export const boardSubject = new BehaviorSubject({
   board: compboard.slice().reverse()
@@ -32,10 +32,28 @@ let globalPromote = 'q';
 
 export function move(start, end) {
   if (start === end) { return }
-  let legalMove = makeMove(start, end, globalPromote);
+  let moveResult = makeMove(start, end, globalPromote);
 
-  if (legalMove === true) {
+  if (moveResult) {
     boardSubject.next({board : compboard.slice().reverse()});
+  }
+  console.log(moveResult);
+  let
+    check     = 1,
+    checkmate = 2,
+    stalemate = 3
+  ;
+
+  if (moveResult === check) {
+    //check
+  }
+
+  if (moveResult === checkmate) {
+    alert(`Checkmate! ${turn === "Dark" ? "Light" : "Dark"} wins!`); //invert because turn has already changed
+  }
+
+  if (moveResult === stalemate) {
+    alert("Draw by stalemate!");
   }
 }
 
@@ -65,7 +83,7 @@ function Board({ board, setBoardState }) {
 
   return (
     <div className="body">
-      <div className="header" style={{"paddingLeft": "1.1%", "paddingTop": ".5%"}}>
+      <div className="header" style={{"paddingLeft": "1.25%", "paddingTop": ".5%"}}>
         <button onClick={reset}>Reset Board</button>
         <button onClick={switchSide}>Flip Board</button>
         <select>
@@ -74,7 +92,7 @@ function Board({ board, setBoardState }) {
           <option onClick={() => setPromote('b')}>Promote to Bishop</option>
           <option onClick={() => setPromote('n')}>Promote to Knight</option>
         </select>
-        <div style={{"color": "white"}}>It is {turn}'s turn</div>
+        <div style={{"color": "white", "paddingLeft": ".5%", "fontSize": "300%"}}>It is {turn}'s turn</div>
       </div>
       <div className="board">
         {columns.slice().reverse().map((_, y) => (
