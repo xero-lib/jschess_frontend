@@ -57,7 +57,7 @@ export function move(start, end) {
   }
 
   if (moveResult === checkmate) {
-    ckingElement.classList.add("checked");
+    okingElement.classList.add("checked");
     document.getElementById("turnheader").textContent = `Checkmate! ${turn === "Dark" ? "Light" : "Dark"} wins!`;
   } else if ([true, 1, 3].includes(moveResult)) {
     document.getElementById("turnheader").textContent = `It is ${turn}'s turn.`;
