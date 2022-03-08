@@ -13,7 +13,6 @@ import Square from "./Square"
 //rxjs
 import { BehaviorSubject } from "rxjs";
 import { turn } from "../jschess/util/makeMove";
-import getWatches from "../jschess/util/getAllWatches";
 
 const files = ["a", "b", "c", "d", "e", "f", "g", "h"];
 const columns = [1, 2, 3, 4, 5, 6, 7, 8];
