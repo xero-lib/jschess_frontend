@@ -96,7 +96,7 @@ function Board({ board, setBoardState }) {
 
   return (
     <div className="body">
-      <div className="header" style={{"paddingLeft": "1.25%", "paddingTop": ".5%"}}>
+      <div className="header" style={{"paddingTop": ".5%"}}>
         <button onClick={reset}>Reset Board</button>
         <button onClick={switchSide}>Flip Board</button>
         <select>
@@ -107,20 +107,22 @@ function Board({ board, setBoardState }) {
         </select>
         <div id={"turnheader"} style={{"color": "white", "paddingLeft": ".5%", "fontSize": "300%"}} />
       </div>
-      <div className="board">
-        {columns.slice().reverse().map((_, y) => (
-          <div key={isLight ? y : 7-y} className="row">
-            {files.map((_, x) => (
-              <Square key={isLight ? x : 7-x} id={`${isLight ? y : 7-y}_${isLight ? x : 7-x}`} x={isLight ? x : 7-x} y={isLight ? y : 7-y} updateFEN={setOut_FEN} children={
-                (board[isLight ? y : 7-y][isLight ? x : 7-x].piece)
-                  ? fetchPiece(board[isLight ? y : 7-y][isLight ? x : 7-x].piece.color, board[isLight ? y : 7-y][isLight ? x : 7-x].piece.symbol, getPosition([(isLight ? y : 7-y), (isLight ? x : 7-x)]))
-                  : <></>
-              } />
-            )
-          )}</div>
-        ))}
-        </div>
-      <code className="footer" style={{"color": "white", "background": "black", "paddingLeft": "1%", "paddingBottom": "1%"}}>{out_FEN}</code>
+      <center>
+        <div className="board">
+          {columns.slice().reverse().map((_, y) => (
+            <div key={isLight ? y : 7-y} className="row">
+              {files.map((_, x) => (
+                <Square key={isLight ? x : 7-x} id={`${isLight ? y : 7-y}_${isLight ? x : 7-x}`} x={isLight ? x : 7-x} y={isLight ? y : 7-y} updateFEN={setOut_FEN} children={
+                  (board[isLight ? y : 7-y][isLight ? x : 7-x].piece)
+                    ? fetchPiece(board[isLight ? y : 7-y][isLight ? x : 7-x].piece.color, board[isLight ? y : 7-y][isLight ? x : 7-x].piece.symbol, getPosition([(isLight ? y : 7-y), (isLight ? x : 7-x)]))
+                    : <></>
+                } />
+              )
+            )}</div>
+          ))}
+          </div>
+        </center>
+      <code className="footer" style={{"color": "white", "background": "black", "paddingBottom": "1%"}}>{out_FEN}</code>
     </div>
   );
 }

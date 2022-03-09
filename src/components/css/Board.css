@@ -1,11 +1,13 @@
-.board {
+/* .board {
     margin-left: 3.85%;
     margin-right: auto;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    /* padding-left: 4.3%; */
-}
+    //padding-left: 4.3%;
+} */
+
+
 
 .row {
     display: table-row;
@@ -34,8 +36,8 @@
 } */
 
 body {
-    padding-left: 30%;
-    padding-right: 30%;
+    /* padding-left: 30%;
+    padding-right: 30%; */
     display: table;
     background-color: black;
     height: 100%;
@@ -61,12 +63,19 @@ body {
                                     supported by Chrome, Edge, Opera and Firefox */
 }
 
+.board {
+    padding-top: 6.75%;
+  position: fixed;
+  left: 0;
+  width: 100%;
+  align-content: center;
+}
+
 .footer {
   position: fixed;
   left: 0;
-  bottom: 0;
-  width: 100%;
   bottom: 4%;
+  width: 100%;
   text-align: center;
 }
 
