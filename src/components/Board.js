@@ -96,7 +96,7 @@ function Board({ board, setBoardState }) {
 
   return (
     <div className="body">
-      <div className="header" style={{"paddingTop": ".5%"}}>
+      <div className="header" style={{"paddingTop": ".5%", "zIndex": "1000"}}>
         <button onClick={reset}>Reset Board</button>
         <button onClick={switchSide}>Flip Board</button>
         <select>
